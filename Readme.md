@@ -73,3 +73,6 @@
 
 	**6º**
 		-para que o rosrun reconheça o pacote, execute 'source devel/setup.bash'
+		
+		
+	**askdnjaskjndasd**
