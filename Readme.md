@@ -1,4 +1,4 @@
-# ROS BASIC:
+# 1 - ROS BASIC:
 
 ## Comandos:
 
@@ -80,18 +80,9 @@ pacotes:
 
 6. para que o rosrun reconheça o pacote, execute `source devel/setup.bash`
 
-.
+***
 
-# CONFIGURAÇÃO GAZEBO-ARDUPILOT
-## Configuração do ambiente de compilação:
-* > https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux
-    * >obs: nessa etapa também é configurado o mavproxy e o SITL
-
-## Utilização do Gazebo + Plugin:
-* https://www.youtube.com/watch?v=m7hPyJJmWmU
-* https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_gazebo_arduplugin.md
-    * obs: Na ultima etapa de execução do SITL, é importante, caso tenha executado o primeiro tutorial de execução automática do ambiente, alterar o caminho de **sim_vehicle.py** para **<começo do caminho>/Tools/autotest/sim_vehicle.py**
-> (Alternativo) https://ardupilot.org/dev/docs/sitl-with-gazebo.html#sitl-with-gazebo
+# 2 - CONFIGURAÇÃO GAZEBO-ARDUPILOT
 
 ## Requisitos (alguns estão incluidos no tutorial de configuração do ambiente):
 1. Ardupilot Mavproxy: https://ardupilot.org/mavproxy/docs/getting_started/download_and_installation.html
@@ -101,8 +92,60 @@ pacotes:
 * pip3
 * git
 
+## Configuração do ambiente de compilação:
+
+* > https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux
+    * >obs: nessa etapa também é configurado o mavproxy e o SITL
+
+## Utilização do Gazebo + Plugin:
+* https://www.youtube.com/watch?v=m7hPyJJmWmU
+* https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_gazebo_arduplugin.md
+    * obs: Na ultima etapa de execução do SITL, é importante, caso tenha executado o primeiro tutorial de execução automática do ambiente, alterar o caminho de **sim_vehicle.py** para **<começo do caminho>/Tools/autotest/sim_vehicle.py**
+> (Alternativo) https://ardupilot.org/dev/docs/sitl-with-gazebo.html#sitl-with-gazebo
+
+
 ### executar:
     $ gazebo --verbose ~/ardupilot_gazebo/worlds/iris_arducopter_runway.world
-.
+
+também:
 
     $ /home/noeticros/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --console
+
+***
+# 3 - ROS WITH MAVPROXY AND SITL
+
+> guia: https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_ros.md
+
+## Requisitos:
+* `catkin build`: uma versão mais sofisticada do que o `catkin_make`
+    * > https://catkin-tools.readthedocs.io/en/latest/installing.html
+* 	devem ser alterados de python(como está no tutorial) para python3
+    * python3-wstool
+    * python3-rosinstall-generator
+    * python3 catkin tools
+    * rosdep (a instalação desse não está contida no tutorial)
+    * geographiclib
+
+# 4 - RUN MAVROS IN GAZEBO
+> GUIA: https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/ros_intro.md
+
+## Requisitos:
+
+reinstalar o gazebo com plugins:
+
+    $ sudo apt-get install ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control ros-noetic-gazebo-plugins
+
+No último guia, fizemos a configuração dos mundos e modelos de drones por meio do repositório do Intelligent Quads, dessa forma, fica mais fácil também executar o gazebo com o seguinte código:
+
+    $ roslaunch iq_sim runway.launch
+
+No guia é simplificado o run do SITL, copiando um arquivo de script com o código.
+Depois de configurado, é possível executar acessando a home e usando:
+
+    $ ~/startsitl.sh
+
+Para executar o MAVROS para estimativas mais precisas por meio do MAVLink:
+
+    roslaunch iq_sim apm.launch
+
+
