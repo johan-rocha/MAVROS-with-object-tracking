@@ -49,7 +49,7 @@ pacotes:
 ## Como Criar os Próprios Pacotes?
 1. criando a workspace:
     * é preciso criar uma workspace (onde criamos os pacotes)
-        * em /home, crie uma pasta chamada catkin_ws, dentro dela, uma pasta chamada src; após isso, dê o comando **catkin_make** ou **catkin build** dentro da **catkin_ws**, e pronto. 
+        * em /home, crie uma pasta chamada catkin_ws, dentro dela, uma pasta chamada src; após isso, dê o comando `catkin_make` ou `catkin build` dentro da **catkin_ws**, e pronto. 
 
 > obs: pode usar uma pasta de nome diferente de catkin_ws!!
 
@@ -76,9 +76,33 @@ pacotes:
         )`
 
 
-5º
-    -para atualizar o pacote no ros, execute catkin_make(OU catkin build, caso o utilize) na catkin_ws novamente.
+5. para atualizar o pacote no ros, execute `catkin_make`(OU `catkin build`, caso o utilize) na catkin_ws novamente.
 
-6º
-    -para que o rosrun reconheça o pacote, execute 'source devel/setup.bash'
-		
+6. para que o rosrun reconheça o pacote, execute `source devel/setup.bash`
+
+.
+
+# CONFIGURAÇÃO GAZEBO-ARDUPILOT
+## Configuração do ambiente de compilação:
+* > https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux
+    * >obs: nessa etapa também é configurado o mavproxy e o SITL
+
+## Utilização do Gazebo + Plugin:
+* https://www.youtube.com/watch?v=m7hPyJJmWmU
+* https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_gazebo_arduplugin.md
+    * obs: Na ultima etapa de execução do SITL, é importante, caso tenha executado o primeiro tutorial de execução automática do ambiente, alterar o caminho de **sim_vehicle.py** para **<começo do caminho>/Tools/autotest/sim_vehicle.py**
+> (Alternativo) https://ardupilot.org/dev/docs/sitl-with-gazebo.html#sitl-with-gazebo
+
+## Requisitos (alguns estão incluidos no tutorial de configuração do ambiente):
+1. Ardupilot Mavproxy: https://ardupilot.org/mavproxy/docs/getting_started/download_and_installation.html
+2. SITL: https://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html
+
+## Pendências:
+* pip3
+* git
+
+### executar:
+    $ gazebo --verbose ~/ardupilot_gazebo/worlds/iris_arducopter_runway.world
+.
+
+    $ /home/noeticros/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --console
