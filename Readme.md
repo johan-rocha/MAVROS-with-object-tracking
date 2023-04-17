@@ -46,7 +46,7 @@
 
 	obs:são criadas 3 pastas: **devel**, src e build;
 
-	<strong>2º - criando o pacote</strong>
+	**2º - criando o pacote**
 		mudar para a pasta src e executar o comando:
 		catkin_create_pkg <nome_do_pacote> <depend1> <depend2> ...
 		as dependencias (pacotes) basicas são:
@@ -54,11 +54,11 @@
 		-roscpp
 		-rospy
 
-	<strong>3º</strong>
+	**3º**
 		-edite o package.xml, lá contém as informações do seu pacote;
 		- o CMakeLists.txt será usado para listar os nós, que vamos aprender na próxima etapa:
 
-	<strong>4º - criando um nó:</strong>
+	**4º - criando um nó:**
 		-crie uma pasta chamada scripts dentro da pasta do seu pacote
 		-dentro de scripts, crie um programa em python, que será seu nó
 		-temos que informar ao pacote a respeito do nó com o CMakeLists.txt, inserindo no final do arquivo:
@@ -68,8 +68,8 @@
 			)
 
 
-	<strong>5º</strong>
+	**5º**
 		-para atualizar o pacote no ros, execute catkin_make(OU catkin build, caso o utilize) na catkin_ws novamente.
 
-	<strong>6º</strong>
+	**6º**
 		-para que o rosrun reconheça o pacote, execute 'source devel/setup.bash'
