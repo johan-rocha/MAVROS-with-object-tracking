@@ -1,0 +1,14 @@
+<launch>
+  <node
+    pkg="lepton_thermal_cam"
+    type="thermal_cam_pub.py"
+    name="thermal_pub"
+    output="screen"
+  />
+  <node
+    pkg="lepton_thermal_cam"
+    type="thermal_cam_sub.py"
+    name="thermal_sub"
+    output="screen"
+  />
+</launch>
