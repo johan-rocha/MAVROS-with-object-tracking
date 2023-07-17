@@ -24,7 +24,19 @@ def callback(data):
   
   # Display image
   cv2.imshow("camera", cv2.resize(current_frame, (640, 480)))
-   
+  
+  filename = 'thermal_video.mp4'
+  file_size = (640, 480) # Assumes 640x480 mp4
+  frames_per_second = 20.0
+ 
+  fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+  result = cv2.VideoWriter(filename,  
+                           fourcc, 
+                           frames_per_second, 
+                           file_size)
+  
+  result.write(current_frame)
+  
   cv2.waitKey(1)
       
 def receive_message():
